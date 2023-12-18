@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1089256537196",
+    "project_id": "xyz-app-b7eb2",
+    "storage_bucket": "xyz-app-b7eb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1089256537196:android:6c9f49bc9607606e16ac49",
+        "android_client_info": {
+          "package_name": "com.codelab.xyz_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCzmjW7RCRXQohU7bFgbxnqkwpQKsryn3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
