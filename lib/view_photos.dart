@@ -14,7 +14,7 @@ class ViewPhotos extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.primary,
         centerTitle: true,
         title: Text(
-          "VIEW PHOTOS",
+          "VIEW CONTACTS",
           style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 color: Theme.of(context).colorScheme.surface,
                 fontWeight: FontWeight.w900,

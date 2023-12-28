@@ -12,7 +12,20 @@
           "package_name": "com.codelab.xyz_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1089256537196-8qpqjhrpauid2frof1c8uqvq95i364qc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codelab.xyz_app",
+            "certificate_hash": "7e68de67011b92215bb73a5dd1b46648684f4a9a"
+          }
+        },
+        {
+          "client_id": "1089256537196-502l5md6pa53m4carur3npbu5fct2a78.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCzmjW7RCRXQohU7bFgbxnqkwpQKsryn3A"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1089256537196-502l5md6pa53m4carur3npbu5fct2a78.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1089256537196-tj9ebf2tce5rr0sndnhirvic9cdg9rb9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.codelab.xyzApp"
+              }
+            }
+          ]
         }
       }
     }

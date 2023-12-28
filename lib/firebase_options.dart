@@ -63,6 +63,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1089256537196',
     projectId: 'xyz-app-b7eb2',
     storageBucket: 'xyz-app-b7eb2.appspot.com',
+    androidClientId: '1089256537196-8qpqjhrpauid2frof1c8uqvq95i364qc.apps.googleusercontent.com',
+    iosClientId: '1089256537196-tj9ebf2tce5rr0sndnhirvic9cdg9rb9.apps.googleusercontent.com',
     iosBundleId: 'com.codelab.xyzApp',
   );
 }

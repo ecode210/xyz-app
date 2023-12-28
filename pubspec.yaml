@@ -24,6 +24,8 @@ dependencies:
   uuid: ^4.2.1
   cached_network_image: ^3.3.0
   flutter_svg: ^2.0.9
+  url_launcher: ^6.2.2
+  font_awesome_flutter: ^10.6.0
 
 dev_dependencies:
   flutter_test:

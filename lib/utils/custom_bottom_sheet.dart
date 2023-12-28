@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CustomBottomSheet {
   static Future<void> uploadPhotoBottomSheet(
@@ -45,7 +46,7 @@ class CustomBottomSheet {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 20.h),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primaryContainer,
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.25),
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: Column(
@@ -58,7 +59,9 @@ class CustomBottomSheet {
                           5.verticalSpace,
                           Text(
                             "Gallery",
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                           ),
                         ],
                       ),
@@ -76,7 +79,7 @@ class CustomBottomSheet {
                     child: Container(
                       padding: EdgeInsets.symmetric(vertical: 20.h),
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.primaryContainer,
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.25),
                         borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: Column(
@@ -89,7 +92,9 @@ class CustomBottomSheet {
                           5.verticalSpace,
                           Text(
                             "Camera",
-                            style: Theme.of(context).textTheme.bodyLarge,
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
                           ),
                         ],
                       ),
@@ -238,6 +243,114 @@ class CustomBottomSheet {
               ),
             ),
             50.verticalSpace,
+          ],
+        );
+      },
+    );
+  }
+
+  static Future<void> contactBottomSheet(
+    BuildContext context, {
+    required String number,
+    required Function(String) launchURL,
+  }) async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return ListView(
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
+          children: [
+            10.verticalSpace,
+            Center(
+              child: Container(
+                height: 3.h,
+                width: 30.w,
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.secondary.withOpacity(0.25),
+                  borderRadius: BorderRadius.circular(10.r),
+                ),
+              ),
+            ),
+            20.verticalSpace,
+            Text(
+              "Contact",
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    fontWeight: FontWeight.w700,
+                  ),
+            ),
+            20.verticalSpace,
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Feedback.forTap(context);
+                      Navigator.pop(context);
+                      launchURL("tel:+$number");
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 20.h),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.25),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.phone_rounded,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 50.sp,
+                          ),
+                          5.verticalSpace,
+                          Text(
+                            "Phone",
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                20.horizontalSpace,
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () {
+                      Feedback.forTap(context);
+                      Navigator.pop(context);
+                      launchURL("https://wa.me/$number?text=Hello");
+                    },
+                    child: Container(
+                      padding: EdgeInsets.symmetric(vertical: 20.h),
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary.withOpacity(0.25),
+                        borderRadius: BorderRadius.circular(20.r),
+                      ),
+                      child: Column(
+                        children: [
+                          Icon(
+                            FontAwesomeIcons.whatsapp,
+                            color: Theme.of(context).colorScheme.primary,
+                            size: 50.sp,
+                          ),
+                          5.verticalSpace,
+                          Text(
+                            "WhatsApp",
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 50),
           ],
         );
       },

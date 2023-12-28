@@ -1,12 +1,25 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:xyz_app/take_photo.dart';
+import 'package:xyz_app/utils/custom_bottom_sheet.dart';
 import 'package:xyz_app/view_photos.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final GoogleSignIn googleSignIn = GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +33,14 @@ class Home extends StatelessWidget {
           text: TextSpan(
             children: [
               TextSpan(
-                text: "XYZ App",
+                text: "XYZ Everything App",
                 style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                       color: Theme.of(context).colorScheme.surface,
                       fontWeight: FontWeight.w900,
                     ),
               ),
               TextSpan(
-                text: " (v1.1)",
+                text: "(™) v1.1",
                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                       color: Theme.of(context).colorScheme.surface,
                       fontWeight: FontWeight.w900,
@@ -86,8 +99,41 @@ class Home extends StatelessWidget {
                         Feedback.forTap(context);
                         Navigator.of(context).push(CupertinoPageRoute(builder: (context) => const ViewPhotos()));
                       },
-                      title: "View Photo",
+                      title: "View Contacts",
                       icon: Icons.image_rounded,
+                    ),
+                    10.verticalSpace,
+                    GestureDetector(
+                      onTap: () {
+                        googleLogin();
+                      },
+                      child: Container(
+                        height: 60.h,
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(100.r),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Theme.of(context).colorScheme.primary.withOpacity(0.25),
+                              blurRadius: 10,
+                              spreadRadius: 2,
+                              offset: Offset(0, 5.h),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Google Sign-In",
+                              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                                    color: Theme.of(context).colorScheme.surface,
+                                  ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                     20.verticalSpace,
                     Align(
@@ -97,23 +143,61 @@ class Home extends StatelessWidget {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: "Simple, Fast, Secure\n",
+                              text: "World’s simplest, fastest mobile CRM(™)\n",
                               style: Theme.of(context).textTheme.headlineLarge!.copyWith(
                                     color: Theme.of(context).colorScheme.onSurface,
                                     fontWeight: FontWeight.w900,
                                   ),
                             ),
                             TextSpan(
-                              text: "For 24/7 support call or text us:\n",
+                              text: "Call or Text us:\n",
                               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     color: Theme.of(context).colorScheme.onSurface,
                                   ),
                             ),
                             TextSpan(
-                              text: "+1-727-565-7296",
+                              text: "Cal Tiger, chief everything officer, ",
                               style: Theme.of(context).textTheme.bodyMedium!.copyWith(
                                     color: Theme.of(context).colorScheme.onSurface,
                                   ),
+                            ),
+                            TextSpan(
+                              text: "727-565-7296\n",
+                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.w700,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  CustomBottomSheet.contactBottomSheet(
+                                    context,
+                                    number: "17275657296",
+                                    launchURL: launchURL,
+                                  );
+                                },
+                            ),
+                            TextSpan(
+                              text: "JP, PM, India, Whatsapp ",
+                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Theme.of(context).colorScheme.onSurface,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: "+91 96556 10954",
+                              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                                    color: Theme.of(context).colorScheme.primary,
+                                    fontWeight: FontWeight.w700,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  CustomBottomSheet.contactBottomSheet(
+                                    context,
+                                    number: "919655610954",
+                                    launchURL: launchURL,
+                                  );
+                                },
                             ),
                           ],
                         ),
@@ -125,9 +209,10 @@ class Home extends StatelessWidget {
                       child: GestureDetector(
                         onTap: () {
                           Feedback.forTap(context);
+                          launchURL("https://sites.google.com/view/xyzlabs/home");
                         },
                         child: Text(
-                          "www.xyzapp.com",
+                          "www.xyzapp.site",
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                                 color: Theme.of(context).colorScheme.primary,
@@ -272,5 +357,22 @@ class Home extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  Future<void> googleLogin() async {
+    final user = await googleSignIn.signIn();
+    if (user == null) return;
+    final auth = await user.authentication;
+    print("Access Token: ${auth.accessToken}");
+    print("Email: ${user.email}");
+    print("Photo: ${user.photoUrl}");
+    print("Name: ${user.displayName}");
+  }
+
+  Future<void> launchURL(String url) async {
+    if (!await launchUrl(Uri.parse(url))) {
+      debugPrint("Could not launch $url");
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Could not launch URL")));
+    }
   }
 }

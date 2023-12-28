@@ -34,6 +34,14 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>LSApplicationQueriesSchemes</key>
+    <array>
+    	<string>sms</string>
+    	<string>tel</string>
+    	<string>https</string>
+    	<string>http</string>
+    	<string>*/*</string>
+    </array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
@@ -53,5 +61,18 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>GIDClientID</key>
+    <string>1089256537196-tj9ebf2tce5rr0sndnhirvic9cdg9rb9.apps.googleusercontent.com</string>
+    <key>CFBundleURLTypes</key>
+    <array>
+    	<dict>
+    		<key>CFBundleTypeRole</key>
+    		<string>Editor</string>
+    		<key>CFBundleURLSchemes</key>
+    		<array>
+    			<string>com.googleusercontent.apps.1089256537196-tj9ebf2tce5rr0sndnhirvic9cdg9rb9</string>
+    		</array>
+    	</dict>
+    </array>
 </dict>
 </plist>

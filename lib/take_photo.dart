@@ -14,7 +14,7 @@ class TakePhoto extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         title: Text(
-          "Take Photo",
+          "TAKE PHOTO",
           style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 color: Theme.of(context).colorScheme.surface,
                 fontWeight: FontWeight.w900,
@@ -44,6 +44,28 @@ class TakePhoto extends StatelessWidget {
               context,
               title: "Screenshots",
               icon: Icons.phone_android_rounded,
+            ),
+            30.verticalSpace,
+            RichText(
+              textAlign: TextAlign.center,
+              text: TextSpan(
+                children: [
+                  TextSpan(
+                    text: "XYZ Everything App(™)\n",
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface,
+                          fontWeight: FontWeight.w900,
+                        ),
+                  ),
+                  TextSpan(
+                    text: "World’s simplest, fastest mobile CRM(™)",
+                    style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: Theme.of(context).colorScheme.onSurface,
+                          fontWeight: FontWeight.w900,
+                        ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

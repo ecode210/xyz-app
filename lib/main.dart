@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:xyz_app/firebase_options.dart';
 import 'package:xyz_app/home.dart';
 
@@ -23,9 +22,10 @@ void main() async {
   runApp(const MyApp());
 }
 
-final GoogleSignIn googleSignIn = GoogleSignIn(
-  scopes: ["email", "https://www.googleapis.com/auth/calendar"],
-);
+// final GoogleSignIn googleSignIn = GoogleSignIn(
+// clientId: "1089256537196-tj9ebf2tce5rr0sndnhirvic9cdg9rb9.apps.googleusercontent.com",
+// scopes: ["email", "https://www.googleapis.com/auth/calendar"],
+// );
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -138,14 +138,4 @@ class MyApp extends StatelessWidget {
       },
     );
   }
-}
-
-Future<void> googleLogin() async {
-  final user = await googleSignIn.signIn();
-  if (user == null) return;
-  final auth = await user.authentication;
-  print("Access Token: ${auth.accessToken}");
-  print("Email: ${user.email}");
-  print("Photo: ${user.photoUrl}");
-  print("Name: ${user.displayName}");
 }
